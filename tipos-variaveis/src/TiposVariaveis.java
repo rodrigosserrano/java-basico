@@ -14,7 +14,7 @@ public class TiposVariaveis {
 
         // Fazer um casting de uma variável
         short inteiroCasting = (short) inteiro;
-        
+
         // Constante em java | Deve adicionar 'final', por convenção a varíavel deve ser escrito em maiúsculo
         final int NUMERO = 245;
     }
