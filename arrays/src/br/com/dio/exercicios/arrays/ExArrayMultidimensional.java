@@ -24,4 +24,9 @@ public class ExArrayMultidimensional {
             System.out.println();
         }
     }
+
+    int teste () {
+        return 1;
+    }
+
 }
