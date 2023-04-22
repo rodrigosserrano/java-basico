@@ -1,8 +1,8 @@
 package com.projeto.fila;
 
-public class Fila {
+public class Fila<T> {
 
-    private No refNoInput;
+    private No<T> refNoInput;
 
     public Fila() {
         this.refNoInput = null;
@@ -12,12 +12,13 @@ public class Fila {
         return (this.refNoInput == null);
     }
 
-    public void enqueue(No novoNo) {
-        novoNo.setRefNo(refNoInput);
-        refNoInput = novoNo;
+    public void enqueue(T object) {
+        No no = new No(object);
+        no.setRefNo(refNoInput);
+        refNoInput = no;
     }
 
-    public No first() {
+    public T first() {
         if (this.isEmpty()) return null;
 
         No auxNo = refNoInput;
@@ -26,11 +27,11 @@ public class Fila {
             auxNo = auxNo.getRefNo();
         }
 
-        return auxNo;
+        return (T) auxNo.getObject();
     }
 
     // Remove o primeiro da fila
-    public No dequeue() {
+    public T dequeue() {
         if (this.isEmpty()) return null;
 
         No auxNo = refNoInput; // Auxilar para pegar o nó que vai se manter
@@ -46,22 +47,26 @@ public class Fila {
         auxNo.setRefNo(null); // pego o nó auxiliar, que aponta para um nó antes do nó que aponta para null e seto o mesmo para null
 
         // retorno o nó removido
-        return firstNo;
+        return (T) firstNo.getObject();
     }
 
     @Override
     public String toString() {
         if (this.isEmpty()) return "null";
 
-        String returnString = "";
+        String returnString = "\n==================\n";
+        returnString += "====   Fila   ====\n";
+        returnString += "==================\n\n";
+
         No auxNo = refNoInput;
 
         while (auxNo.getRefNo() != null) {
             returnString += "[No{Objeto=" + auxNo.getObject() + "}]->";
             auxNo = auxNo.getRefNo();
         }
-        returnString += "[No{Objeto=" + auxNo.getObject() + "}]->null"; // Last
+        returnString += "[No{Objeto=" + auxNo.getObject() + "}]->null\n"; // Last
 
+        returnString += "\n==================\n";
         return returnString;
     }
 }
