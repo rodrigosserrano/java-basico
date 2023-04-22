@@ -14,5 +14,14 @@ public class Main {
         System.out.println(fila.dequeue());
 
         System.out.println(fila);
+
+        fila.enqueue(new No("ultimo"));
+
+        System.out.println(fila);
+
+        System.out.println(fila.first());
+
+        System.out.println(fila);
+
     }
 }

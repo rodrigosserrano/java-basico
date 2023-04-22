@@ -20,11 +20,13 @@ public class Fila {
     public No first() {
         if (this.isEmpty()) return null;
 
-        while (refNoInput.getRefNo() != null) {
-            refNoInput = refNoInput.getRefNo();
+        No auxNo = refNoInput;
+
+        while (auxNo.getRefNo() != null) {
+            auxNo = auxNo.getRefNo();
         }
 
-        return refNoInput;
+        return auxNo;
     }
 
     // Remove o primeiro da fila
